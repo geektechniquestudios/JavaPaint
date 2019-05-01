@@ -270,7 +270,7 @@ public class PaintWindow extends JFrame
     	{
     		if(e.getSource() == transSlider)
     		{
-    			transLabel.setText("Transparent: " + dec.format(transSlider.getValue() * .01) );
+    			transLabel.setText("Transparency: " + dec.format(transSlider.getValue() * .01) );
     			transparentVal = (float) (transSlider.getValue() * .01);	
     		}
     	}

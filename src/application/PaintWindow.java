@@ -99,17 +99,17 @@ public class PaintWindow extends JFrame
         
         theBut.addActionListener(new ActionListener() 
         {
-			public void actionPerformed(ActionEvent e) 
+		public void actionPerformed(ActionEvent e) 
+		{
+			if(stroke)
+			{	
+				strokeColor = JColorChooser.showDialog(null,  "Pick a Stroke", Color.BLACK);
+			} 
+			else
 			{
-				if(stroke)
-				{	
-					strokeColor = JColorChooser.showDialog(null,  "Pick a Stroke", Color.BLACK);
-				} 
-				else
-				{
-					fillColor = JColorChooser.showDialog(null,  "Pick a Fill", Color.BLACK);
-				}		
-			}
+				fillColor = JColorChooser.showDialog(null,  "Pick a Fill", Color.BLACK);
+			}		
+		}
         });     
         return theBut;  
     }
@@ -175,17 +175,17 @@ public class PaintWindow extends JFrame
             	{
             		if(currentAction == 1)
             		{
-	          			int x = e.getX();
-	          			int y = e.getY();
+				int x = e.getX();
+				int y = e.getY();
 	          			
-	          			Shape aShape = null;
-	          			strokeColor = fillColor;          			
-	          			aShape = drawBrush(x,y,5,5);
+				Shape aShape = null;
+				strokeColor = fillColor;          			
+				aShape = drawBrush(x,y,5,5);
 	          			
-	          			shapes.add(aShape);
-	                    shapeFill.add(fillColor);
-	                    shapeStroke.add(strokeColor);            
-	                    transPercent.add(transparentVal);
+				shapes.add(aShape);
+				shapeFill.add(fillColor);
+				shapeStroke.add(strokeColor);            
+				transPercent.add(transparentVal);
             		} 
             	drawEnd = new Point(e.getX(), e.getY());
                 repaint();
@@ -215,7 +215,7 @@ public class PaintWindow extends JFrame
             
             if (drawStart != null && drawEnd != null)
             { 
-                graphSettings.setComposite(AlphaComposite.getInstance(AlphaComposite.SRC_OVER, 0.40f));
+		graphSettings.setComposite(AlphaComposite.getInstance(AlphaComposite.SRC_OVER, 0.40f));
             	graphSettings.setPaint(Color.LIGHT_GRAY); 	
             	Shape aShape = null;
             	
@@ -268,11 +268,11 @@ public class PaintWindow extends JFrame
     {
     	public void stateChanged(ChangeEvent e) 
     	{
-    		if(e.getSource() == transSlider)
-    		{
-    			transLabel.setText("Transparency: " + dec.format(transSlider.getValue() * .01) );
-    			transparentVal = (float) (transSlider.getValue() * .01);	
-    		}
+		if(e.getSource() == transSlider)
+		{
+			transLabel.setText("Transparency: " + dec.format(transSlider.getValue() * .01) );
+			transparentVal = (float) (transSlider.getValue() * .01);	
+		}
     	}
     }
 }
